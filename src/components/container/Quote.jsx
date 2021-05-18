@@ -5,7 +5,7 @@ function Quote({text, character, image}) {
   return (
     <div>
       <h1>{character}</h1>
-      <image src={image} alt={character}></image>
+      <img src={image} alt={character} />
       <p>quote: {text}</p>
     </div>
   )
