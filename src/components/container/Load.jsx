@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default Load = ({onClick}) => {
+function Load ({onClick}) {
   return (
     <button onClick={onClick}>Fetch</button>
   )
 }
 
-Load.PropTypes = {
+Load.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
+export default Load

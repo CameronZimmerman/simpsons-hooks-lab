@@ -2,6 +2,7 @@ import React from 'react'
 import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
+import SimpsonsQuote from './SimpsonsQuote'
 
 describe('SimpsonsQuote component', () => {
   const server = setupServer(
@@ -22,14 +23,15 @@ describe('SimpsonsQuote component', () => {
   beforeAll(() => server.start)
   afterAll(() => server.stop)
 
-  it('displays a quote on button press', () => {
+  it('displays a quote on button press', async () => {
+    render(<SimpsonsQuote />)
     expect(screen.queryByText("But my mom says I'm cool.")).toBe(null)
     const loadButton = screen.getByRole('button')
 
     fireEvent.click(loadButton)
 
-    waitFor(() => {
-      screen.findByText("But my mom says I'm cool.")
+    await waitFor(() => {
+     screen.getByText("But my mom says I'm cool.")
     })
   })
 })
